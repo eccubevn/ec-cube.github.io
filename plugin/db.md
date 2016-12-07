@@ -53,6 +53,7 @@ $app['sample.repository.[エンティティ名]'] = $app->share(function () use 
 
 本体の既存のリポジトリに対して関数の追加を行いたい場合、プラグインからリポジトリに対して直接追加することはできませんが、リポジトリクラスを継承することで対応することは可能です。
 
+Trường hợp muốn thêm hàm số vào repository sẵn có trong Hontai, tuy từ Plugin không thề add trực tiếp vào repository nhưng có thể đối ứng thông qua repository class.
 
 ```php
 // 既存Repositoryを継承したRepository定義
@@ -63,6 +64,7 @@ $app['[プラグインコード].repository.category'] = $app->share(function ()
 
 こうすることでプラグインから新たにエンティティ定義をする必要なく、そのエンティティに対するリポジトリが定義可能です。上記の例だとCategoryクラスに対してリポジトリから操作可能となります。
 
+Nếu làm như vậy sẽ không cần thiết định nghĩa entity mới từ plugin nữa mà có thể định nghĩa repository vào entity đó. Ở ví dụ trên, có thể thao tác từ repository đối với Category class
 
 ### 既存テーブルに対する拡張
 
