@@ -6,11 +6,12 @@ title: コントローラー
 # {{ page.title }}
 
 プラグインでもコントローラーを作成することで新たな画面を作成することが可能です。作成方法は基本的には本体側と同じです。
-43432423432423423abc
-### コントローラーのルーティング定義
+Ngay cả Plugin cũng có thể tạo màn hình mới bằng cách tạo controller.Về cách tạo, cơ bản giống với bên Hontai (Main).
+### コントローラーのルーティング定義 (Routing definition of controller)
 
-本体側ではルーティング定義は`FrontControllerProvider`や`AdminControllerProvider`に記述しますが、プラグインでは`ServiceProvider`に定義します。  
+本体側ではルーティング定義は`FrontControllerProvider`や`AdminControllerProvider`に記述しますが、プラグインでは`ServiceProvider`に定義します。 Định nghĩa routing bên Hontai có ghi là`FrontControllerProvider`và `AdminControllerProvider` nhưng ở Plugin chỉ định nghĩa bằng `ServiceProvider` 
 記述する内容は本体側と同じ内容となります。
+Nội dung miêu tả sẽ giống với bên Hontai
 
 ```php
 <?php
@@ -45,36 +46,40 @@ class XXXXServiceProvider implements ServiceProviderInterface
         $app->mount('', $front);
 ```
 ルーティングを作成する時の注意点として、
+Những điểm chú ý khi tạo controller
 
 - 管理画面のルーティング定義をする場合、必ず`'/'.$app['config']['admin_route']`を記述
-- URLやバインド名は必ずユニーク  
-→基本的にURLやバインド名はプラグインコードをつけておけばユニークになります。
+- Trường hợp định nghĩa routing của Màn hình quản lý, nhất định phải mô tả '/'.$app['config']['admin_route']`
+- URLやバインド名は必ずユニーク 
+- URL và bind name phải là duy nhất
+→基本的にURLやバインド名はプラグインコードをつけておけばユニークになります。(Cơ bản chỉ cần thêm plugin code vào URL và bind name là chúng sẽ trở thành duy nhất)
 - プラグインの設定画面を定義する場合、
-
+Trường hợp định nghĩa màn hình setting của Plugin
 プラグインの設定画面を定義する場合、
 
-- ルーティング定義  
+- ルーティング定義   (Định nghĩa routing)
 $app->match('/plugin/[プラグインコード]/config',
 
-- コントローラー  
+- コントローラー   (Controller)
 Plugin/[プラグインコード]/Controller/ConfigController  
 
-- バインド名  
+- バインド名   (Bind name)
 ->bind('plugin_[プラグインコード]_config');
 
-- 設定画面の定義
+- 設定画面の定義 (Định nghĩa màn hình setting)
 
 ```
 $admin->match('/plugin/[プラグインコード]/config', 'Plugin\[プラグインコード]\Controller\ConfigController::index')->bind('plugin_[プラグインコード]_config');
 ```
 
-と定義してください。詳しくは[プラグイン仕様書](http://downloads.ec-cube.net/src/manual/v3/plugin.pdf){:target="_blank"}の「プラグインの設定画面の作成方法」を参照してください。
+Chi tiết hãy tham khảo 「プラグインの設定画面の作成方法」 của [プラグイン仕様書](http://downloads.ec-cube.net/src/manual/v3/plugin.pdf){:target="_blank"}
 
-### 画面を表示する必要がないコントローラーを作成する場合
+### 画面を表示する必要がないコントローラーを作成する場合 (Trường hợp tạo các Controller không cần hiển thị lên màn hình)
 
 プラグインによっては画面を表示する必要がない処理の時でも必ずResponsを返すようにしてください。
-
+Mặc dù tùy vào Plugin mà có lúc xử lý không cần thiết hiển thị lên màn hình nhưng nhất định phải làm cho có thể trả lại Respons
 - **NG** : 下記のような実装では、`exit`で終了するため、EC-CUBE側に処理が戻りません。
+Trong nội dung coding dưới đây, vì kết thúc bằng`exit` nên xử lý không quay lại phía EC-CUBE
 
 ```php
 <?php
