@@ -115,6 +115,7 @@ Plugin\[プラグインコード]\Entity\Profile:
 このように関連付けを行います。但し、`plg_profile`テーブルへは各自で実装が必要になrます。
 
 Tạo mối quan hệ như trên. Tuy nhiên, cần phải tự thực hiện (code?) cho table `plg_profile`
+
 よく行う方法は、completeイベント内でフォームの値を取得して登録する方法です。
 
 Cách để làm tốt là lấy giá trị của form trong event complete và đăng ký.
