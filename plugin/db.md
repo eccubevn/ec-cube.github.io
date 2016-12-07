@@ -6,9 +6,10 @@ title: エンティティ、リポジトリ
 # {{ page.title }}
 
 プラグインでDBを扱うには本体と同じくエンティティクラスを作ります。
-
-### エンティティファイルの配置場所
+Để có thể handle DB bằng Plugin giống với Hontai (main) thì ta tạo entity class.
+### エンティティファイルの配置場所 (Location of the entity file)
 エンティティファイルは本体と同じくEntityディレクトリ配下に置きます。
+Cũng giống với Hontai, entity file được đặt dưới Entity directory 
 
 ```
 [プラグインコード]
@@ -18,24 +19,30 @@ title: エンティティ、リポジトリ
   │   └── XXXXRepository.php
 ```
 ※本体ではエンティティクラスは
-
+Entity class tại Hontai thì
 ```
 ./vendor/bin/doctrine orm:generate:entities --extend="Eccube\\Entity\\AbstractEntity" src
 ```
 というコマンドを実行すれば自動的に作成されますが、プラグインの場合でもオプションを追加することでエンティティクラスを自動で所定のディレクトリに作成してくれます。
 
+chỉ cần chạy command như trên thì sẽ tự động tạo. Trường hợp của plugin cũng chỉ cần thêm option thì entity class sẽ tự động tạo trong directory cố định
 ```
 ./vendor/bin/doctrine orm:generate:entities --filter="Plugin\\[プラグインコード]\\Entity\\[エンティティ名]" --extend="Eccube\\Entity\\AbstractEntity" app
 ```
 
 filterオプションを追加し、最後のパラメータをappと指定することで所定のディレクトリにエンティティクラスを作成してくれます。
 
+Thêm option filter sau đó chỉ định parameter cuối cùng là app thì entity class sẽ được tạo trong directory cố định.
 
-### リポジトリクラス
+### リポジトリクラス (Repository class)
 
 作成したエンティティに対してリポジトリクラスも作成できます。
 
+Đối với những entity đã có, cũng có thể tạo repository class.
+
 リポジトリを作成する場合、ServiceProviderにリポジトリ定義が必要になります。
+
+Khi tạo repository, ServiceProvider sẽ cần dùng để định nghĩa repository.
 
 ```php
 // Repository
