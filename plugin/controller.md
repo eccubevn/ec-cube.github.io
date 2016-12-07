@@ -6,7 +6,7 @@ title: コントローラー
 # {{ page.title }}
 
 プラグインでもコントローラーを作成することで新たな画面を作成することが可能です。作成方法は基本的には本体側と同じです。
-
+43432423432423423
 ### コントローラーのルーティング定義
 
 本体側ではルーティング定義は`FrontControllerProvider`や`AdminControllerProvider`に記述しますが、プラグインでは`ServiceProvider`に定義します。  
