@@ -66,11 +66,15 @@ $app['[プラグインコード].repository.category'] = $app->share(function ()
 
 Nếu làm như vậy sẽ không cần thiết định nghĩa entity mới từ plugin nữa mà có thể định nghĩa repository vào entity đó. Ở ví dụ trên, có thể thao tác từ repository đối với Category class
 
-### 既存テーブルに対する拡張
+### 既存テーブルに対する拡張 (Mở rộng đối với table đã có)
 
 基本的に既存テーブルに対してプラグインからカラムを追加するような拡張は推奨していません。
 
+Cơ bản tôi không khuyến khích việc thêm column cho table có sẵn từ plugin .
+
 既存テーブルに対して、例えば`dtb_customer`テーブルに`ニックネーム`を追加したい時は、プラグイン側で`plg_profile`というようなテーブルを作成して関連付けをします。
+
+Đối với table có sẵn, ví dụ như khi muốn thêm `ニックネーム`(nickname) vào Table`dtb_customer` , ta tạo bảng tên `plg_profile` ở phía Plugin rồi tạo mối liên kết.
 
 
 - plg_profile
@@ -110,7 +114,10 @@ Plugin\[プラグインコード]\Entity\Profile:
 
 このように関連付けを行います。但し、`plg_profile`テーブルへは各自で実装が必要になrます。
 
+Tạo mối quan hệ như trên. Tuy nhiên, cần phải tự thực hiện (code?) cho table `plg_profile`
 よく行う方法は、completeイベント内でフォームの値を取得して登録する方法です。
+
+Cách để làm tốt là lấy giá trị của form trong event complete và đăng ký.
 
 ```php
 /* front.entry.index.complete */
