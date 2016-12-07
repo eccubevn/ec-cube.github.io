@@ -55,13 +55,13 @@ class XXXXServiceProvider implements ServiceProviderInterface
 Những điểm chú ý khi tạo controller
 
 - 管理画面のルーティング定義をする場合、必ず`'/'.$app['config']['admin_route']`を記述
-- ->Trường hợp định nghĩa routing của Màn hình quản lý, nhất định phải mô tả '/'.$app['config']['admin_route']`
+->Trường hợp định nghĩa routing của Màn hình quản lý, nhất định phải mô tả '/'.$app['config']['admin_route']`
 - URLやバインド名は必ずユニーク 
-- ->URL và bind name phải là duy nhất
+->URL và bind name phải là duy nhất
 →基本的にURLやバインド名はプラグインコードをつけておけばユニークになります。(Cơ bản chỉ cần thêm plugin code vào URL và bind name là chúng sẽ trở thành duy nhất)
 - プラグインの設定画面を定義する場合、
 
-- ->Trường hợp định nghĩa màn hình setting của Plugin
+->Trường hợp định nghĩa màn hình setting của Plugin
 プラグインの設定画面を定義する場合、
 
 - ルーティング定義   (Định nghĩa routing)
