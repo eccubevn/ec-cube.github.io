@@ -61,17 +61,20 @@ Những điểm chú ý khi tạo controller
 →基本的にURLやバインド名はプラグインコードをつけておけばユニークになります。(Cơ bản chỉ cần thêm plugin code vào URL và bind name là chúng sẽ trở thành duy nhất)
 - プラグインの設定画面を定義する場合、
 
-Trường hợp định nghĩa màn hình setting của Plugin
+- ->Trường hợp định nghĩa màn hình setting của Plugin
 プラグインの設定画面を定義する場合、
 
 - ルーティング定義   (Định nghĩa routing)
 $app->match('/plugin/[プラグインコード]/config',
 
+
 - コントローラー   (Controller)
 Plugin/[プラグインコード]/Controller/ConfigController  
 
+
 - バインド名   (Bind name)
 ->bind('plugin_[プラグインコード]_config');
+
 
 - 設定画面の定義 (Định nghĩa màn hình setting)
 
@@ -117,7 +120,7 @@ class TopController extends AbstractController
 
 - **OK** ： Responsオブジェクトを生成し必ずResponseをreturnしてください。
 
-**OK** Tạo object Respons và nhất định phải return Response
+**OK**: Tạo object Respons và nhất định phải return Response
 ```php
 <?php
 
