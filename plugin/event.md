@@ -7,14 +7,21 @@ title: イベント
 
 プラグインを作成する時に理解する内容の一つにイベントがあります。
 
+Một trong những nội dung lý giải khi tạo Plugin là Event
+
 このイベントはSymfony2のイベントと同義の意味なのですが、EC-CUBE3ではSymfony2のイベントをラップしたフックポイントというものを3.0.9から用意しています。
 
+Tuy đây là event có ý nghĩa giống với event của Symfony2 nhưng trong EC-CUBE 3, từ 3.0.9 trở đi đã chuẩn bị Hookpoint có thể wrap event của Symfony2.
 
-### イベント定義
+### イベント定義 (Định nghĩa Event)
 
 プラグインでイベントを利用する場合、`config.yml`と`event.yml`に定義する必要があります。
 
+Khi sử dụng event trong plugin, cần phải định nghĩa cho `config.yml`và `event.yml`
+
 - `config.yml`にイベントクラスを定義
+
+Định nghĩa event class cho `config.yml`
 
 ```
 event:
@@ -39,6 +46,8 @@ Shopping/index.twig:
 
 イベントクラス、event.ymlは下記に配置します。
 
+event.yml được sắp đặt như dưới đây.
+
 ```
 [プラグインコード]
   ├── XXXXEvent.php
@@ -47,6 +56,7 @@ Shopping/index.twig:
 
 イベントクラスには、event.ymlに定義したイベント名の関数を記述します。
 
+Trong event class có mô tả hàm số của tên event đã được định nghĩa cho event.yml
 
 ```php
 <?php
@@ -93,11 +103,15 @@ class XXXXEvent
 ```
 
 
-### 本体のバージョンチェック
+### 本体のバージョンチェック (Version check của Hontai)
 
 本体のバージョンによりサポートするイベントが異なります。その場合、EC-CUBEのバージョンチェックを行い、イベントを2回実行させないようにします。
 
+Tùy theo version của hontai mà event support sẽ khác nhau. Trong trường hợp đó, ta tiến hành check version của EC-CUBE để không phải chạy event 2 lần
+
 - `event.yml`にイベントを定義
+
+- Định nghĩa event cho `event.yml`
 
 ```
 Shopping/index.twig:
@@ -108,6 +122,8 @@ eccube.event.render.product_detail.before:
 ```
 
 - イベントクラス
+
+- Event class
 
 ```php
 <?php
@@ -159,13 +175,18 @@ class XXXXEvent
 
 ※バージョン毎にサポートする必要がなければバージョンチェックは不要です。
 
+Nếu không cần support cho mỗi version thì không cần check version nữa.
 
 
-### イベントの肥大化を防ぐ
+### イベントの肥大化を防ぐ (Phòng tránh phình to event)
 
 設定するイベントが増えると当然イベントクラスの中身が肥大化してきます。その場合、イベント毎にクラスを分割して管理する方法をお勧めします。
 
+Khi số event cài đặt tăng lên thì đương nhiên bên trong event class sẽ phình to ra. Trong trường hợp đó, tôi khuyên nên chia class cho từng plugin để quản lý.
+
 - イベント用クラスを作成
+
+Tạo class dùng cho event
 
 ```
 [プラグインコード]
@@ -176,6 +197,8 @@ class XXXXEvent
 
 
 - ServiceProviderにイベントクラスを定義
+
+Định nghĩa event class cho ServiceProvider
 
 ```php
 // Event
@@ -190,6 +213,7 @@ $app['[プラグインコード].event.yyyy'] = $app->share(function () use ($ap
 
 - Eventクラスの作成
 
+Tạo Event class
 ```php
 <?php
 
@@ -298,3 +322,5 @@ class YYYYEvent
 ```
 
 作成するイベントクラスは業務に応じて分割してください。
+
+Hãy chia những Event class được tạo ứng với business.
