@@ -7,8 +7,12 @@ title: プラグインの設定、定義
 
 プラグインを動作させるためには最低限必要な設定ファイルが存在し、そのファイルにプラグインの設定を記述します。
 
-### プラグインの設定
+Trong các file setting tối thiểu cần thiết để có thể chạy Plugin có miêu tả setting cho Plugin.
+
+### プラグインの設定 (Cài đặt Plugin)
 プラグインを作成するには必ず`config.yml`ファイルが必要です。
+
+Để tạo được Plugin nhất định cần có file`config.yml`.
 
 ```
 [プラグインコード]
@@ -16,7 +20,12 @@ title: プラグインの設定、定義
 ```
 
 このconfig.ymlにプラグインの設定を記述します。記述する内容としては以下の通りです。  
+
+Trong config.yml này có mô tả setting cho Plugin. Nội dung sẽ như dưới đây
+
 この内容はすべての設定を記述していますが、必要のない設定は定義する必要はありません。
+
+Tuy nội dung này mô tả tất cả setting nhưng cũng không cần định nghĩa những setting không cần thiết.
 
 ```
 name: [プラグイン名]
@@ -35,7 +44,11 @@ const:
 ```
 versionは数値(0.1や1.0.0等々)で定義します。  
 
+version được định nghĩa bằng giá trị số (0.1 hoặc 1.0.0, vv..)
+
 プラグインを動作させる上でconfig.ymlで最低限必要な内容は、
+
+Nội dung cần thiết tối thiểu trong config.yml để chạy plugin như dưới đây:
 
 ```
 name: [プラグイン名]
@@ -45,7 +58,7 @@ version: x.x.x
 となります。
 
 
-### メッセージの設定
+### メッセージの設定 (Cài đặt message)
 EC-CUBE3本体ではエラーメッセージは極力ソースコードには記述せず、  
 `ECCUBEROOT/src/Eccube/Resource/locale/message.ja.yml` に定義して利用しています。  
 プラグイン側でも同様にメッセージ定義が必要になった場合、本体側にメッセージを追加できないため以下のディレクトリに配置して定義します。
