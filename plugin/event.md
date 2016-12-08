@@ -7,7 +7,7 @@ title: イベント
 
 プラグインを作成する時に理解する内容の一つにイベントがあります。
 
-Một trong những nội dung lý giải khi tạo Plugin là Event
+Một trong những nội dung lý giải khi tạo Plugin là Event.
 
 このイベントはSymfony2のイベントと同義の意味なのですが、EC-CUBE3ではSymfony2のイベントをラップしたフックポイントというものを3.0.9から用意しています。
 
@@ -29,6 +29,8 @@ event:
 ```
 
 - `event.yml`にイベントを定義
+
+Định nghĩa event cho `event.yml`
 
 ```
 eccube.event.app.request:
@@ -103,7 +105,7 @@ class XXXXEvent
 ```
 
 
-### 本体のバージョンチェック (Version check của Hontai)
+### 本体のバージョンチェック (Check version của Hontai)
 
 本体のバージョンによりサポートするイベントが異なります。その場合、EC-CUBEのバージョンチェックを行い、イベントを2回実行させないようにします。
 
@@ -111,7 +113,7 @@ Tùy theo version của hontai mà event support sẽ khác nhau. Trong trườn
 
 - `event.yml`にイベントを定義
 
-- Định nghĩa event cho `event.yml`
+Định nghĩa event cho `event.yml`
 
 ```
 Shopping/index.twig:
@@ -123,7 +125,7 @@ eccube.event.render.product_detail.before:
 
 - イベントクラス
 
-- Event class
+Event class
 
 ```php
 <?php
