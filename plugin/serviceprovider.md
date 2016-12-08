@@ -6,11 +6,16 @@ title: サービスプロバイダー
 # {{ page.title }}
 
 プラグイン側でルーティング定義やFormの定義等々プラグインに対しての設定を行う場合、`ServiceProvider`で行います。  
+
+Ở phía plugin, khi tiến hành những setting đối với plugin như định nghĩa routing hay định nghĩa Form thì ta làm `ServiceProvider`
+
 プラグインコードが`SampleTest`とした場合、サービスプバイダーのファイル名とディレクトリの配置はconfig.ymlへの定義は以下の通りです。
 
+Trường hợp Plugin code là `SampleTest`, tên file service provider và vị trí trong directory, định nghĩa đối với config.yml như dưới đây.
 
 - `config.yml`にサービスプロバイダーを定義
 
+Định nghĩa service provider cho `config.yml`
 ```
 service:
     - SampleTestService
@@ -18,13 +23,22 @@ service:
 
 - ファイル名
 
+Tên file
+
 ```
 SampleTestServiceProvider.php
 ```
 ファイル名は`[プラグインコード]ServiceProvider.php`という命名規則で作成します。  
+
+Tạo tên file theo quy định mệnh danh là`[プラグインコード]ServiceProvider.php`.
+
 厳密には`config.yml`で定義した`service`の値に合わせます。
 
+Điều chỉnh giá trị của`service` đã được định nghĩa bằng `config.yml` một cách nghiêm ngặt
+
 - サービスプロバイダーファイル配置場所
+
+Vị trí sắp đặt file service provider 
 
 ```
 SampleTest
@@ -32,8 +46,10 @@ SampleTest
   │   └── SampleTestServiceProvider.php
 ```
 
-### サービスプロバイダーの全体像
+### サービスプロバイダーの全体像 (Hình ảnh toàn thể của Service provider)
 よく利用されるであろう内容を記載しています。下記はプラグインを`Sample`というプラグインコードで作成しています。
+
+Ghi nội dung sẽ thường được sử dụng. Dưới đây là plugin được tạo ra bằng plugin code `Sample`
 
 ```php
 <?php
