@@ -14,6 +14,7 @@ title: フォーム
 Trong plugin, hành động đối với form có 2 loại
 - Mở rộng đối với form hiện tại
 - Tạo form mới
+
 Đối với việc tạo form mới, tham khảo [フォームを表示してみよう](/tutorial-4)
 
 ### 既存のフォームに対しての拡張 (Mở rộng đối với form hiện tại)
