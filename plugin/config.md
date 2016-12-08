@@ -21,7 +21,7 @@ Trong các file setting tối thiểu cần thiết để có thể chạy Plugi
 
 このconfig.ymlにプラグインの設定を記述します。記述する内容としては以下の通りです。  
 
-Trong config.yml này có mô tả setting cho Plugin. Nội dung sẽ như dưới đây
+Trong config.yml này có mô tả setting cho Plugin. Nội dung sẽ như dưới đây.
 
 この内容はすべての設定を記述していますが、必要のない設定は定義する必要はありません。
 
@@ -61,7 +61,12 @@ version: x.x.x
 ### メッセージの設定 (Cài đặt message)
 EC-CUBE3本体ではエラーメッセージは極力ソースコードには記述せず、  
 `ECCUBEROOT/src/Eccube/Resource/locale/message.ja.yml` に定義して利用しています。  
+
+Trong hontai EC-CUBE3, error message không được ghi trong source code mà đang được định nghĩa ở `ECCUBEROOT/src/Eccube/Resource/locale/message.ja.yml` để sử dụng.
+
 プラグイン側でも同様にメッセージ定義が必要になった場合、本体側にメッセージを追加できないため以下のディレクトリに配置して定義します。
+
+Trường hợp ở plugin cần định nghĩa message tương tự, vì không thể thêm message vào Hontai nên ta đặt nó vào directory dưới đây để định nghĩa.
 
 ```
 [プラグインコード]
@@ -72,14 +77,18 @@ EC-CUBE3本体ではエラーメッセージは極力ソースコードには記
 
 プラグインから`message.ja.yml`を読み込むためには、`ServiceProvider`で以下のように定義します。(サービスプロバイダーについては[サービスプロバイダー](serviceprovider)で解説します)
 
+Để đoc được `message.ja.yml` từ plugin, ta định nghĩa như sau tại `ServiceProvider`. (Dùng [サービスプロバイダー](serviceprovider) để giải thích service provider)
+
 ```
 // メッセージ登録
 $file = __DIR__.'/../Resource/locale/message.'.$app['locale'].'.yml';
 $app['translator']->addResource('yaml', $file, $app['locale']);
 ```
 
-### 定数定義
+### 定数定義 (Định nghĩa định số)
 プラグインでは滅多に変更しない値をオプションとして定義する場合、`config.yml`に定義して利用可能です。
+
+Trường hợp định nghĩa giá trị hiếm khi thay đổi trong plugin, ta có thể định nghĩa `config.yml` để sử dụng.
 
 ```
 const:
@@ -89,6 +98,8 @@ const:
 ```
 
 プラグインからは、以下で呼び出すことが可能です。
+
+Từ Plugin, có thể gọi như bên dưới
 
 ```
 $hoge  = $app['config']['プラグインコード']['const']['aaaa'];
