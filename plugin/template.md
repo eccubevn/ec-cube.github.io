@@ -7,9 +7,12 @@ title: テンプレート
 
 プラグインではテンプレートを差し込む場合、イベントを通じて差し込みます。  
 
+Trong Plugin, khi muốn thêm template, phải làm thông qua event.
 
-### テンプレートファイルの配置場所
+### テンプレートファイルの配置場所 (Vị trí đặt file Template)
 テンプレートファイルは本体と同じくResourceディレクトリ配下に置きます。
+
+Template file đặt trong diretory Resource giống như ở Hontai.
 
 ```
 [プラグインコード]
@@ -21,7 +24,7 @@ title: テンプレート
 ```
 
 
-### テンプレートイベント
+### テンプレートイベント (Template event)
 
 EC-CUBE3.0.9からは既存画面に対して項目などの追加を行う場合、テンプレートイベントを利用します。
 
@@ -31,6 +34,7 @@ EC-CUBE3.0.9からは既存画面に対して項目などの追加を行う場�
 return $app->render('Shopping/complete.twig', array(
 ```
 とtwigファイルを指定している部分がそのままイベント名となります。  
+ 
 event.ymlには、
 
 ```yaml
@@ -51,8 +55,38 @@ Admin/Order/index.twig:
 ```
 と`Admin/`をつける必要があります。
 
-### テンプレートイベントによる拡張
+(Vietnamese trans)
+Từ EC-CUBE3.0.9, khi thêm các mục vào màn hình vốn đó, ta dùng Template event.
+
+Để chỉ định event cho những màn hình muốn mở rộng, phần được chỉ định 
+```php
+return $app->render('Shopping/complete.twig', array(
+```
+và twig file trong Controller của Hontai sẽ như vậy mà trở thành tên event.
+
+Trong event.yml có chỉ định tên event và
+```yaml
+Shopping/index.twig:
+    - [onShoppingIndexRender, NORMAL]
+```
+Trường hợp của màn hình quản lý  
+
+```php
+return $app->render('Order/index.twig', array(
+``` 
+và trường hợp twig được chỉ định ở Cotroller  thì ở 
+event.yml cần thêm vào
+
+```yaml
+Admin/Order/index.twig:
+    - [onAdminOrderIndexRender, NORMAL]
+```
+ và `Admin/`
+ --------------------
+### テンプレートイベントによる拡張 (Mở rộng bởi template event)
 既存画面に対して拡張を行うにはテンプレートイベントに対する処理を実装する必要があります。 formを項目として追加したい場合、
+
+Để mở rộng màn hình vốn có, cần phải thực thi xử lý đối với template event. Trường hợp muốn add form như là item thì bổ sung như sau sẽ có thể add được.
 
 - XXXXEvent.php
 {% highlight php %}
