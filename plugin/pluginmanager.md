@@ -8,6 +8,9 @@ title: プラグインマネージャー
 プラグインのインストール、アンインストール、有効、無効、アップデートを行うときに必ず呼び出されるクラスがあります。  
 そのクラスは`PluginManager`であり、例えばプラグインをインストール時に行っておきたい処理は`PluginManager`に記述しておきます。
 
+Khi tiến hành Install, Uninstall, Enable, Disable, Update plugin có một class nhất định phải gọi.
+Class đó là `PluginManager`. Ví dụ như khi tiến hành xử lý của install plugin, phải ghi `PluginManager` vào.
+
 ```
 [プラグインコード]
   ├── PluginManager.php
@@ -83,6 +86,8 @@ class PluginManager extends AbstractPluginManager
 
 それぞれの関数で行う処理をまとめていきます。
 
+Tôi sẽ tổng hợp từng xử lý được thực hiện bằng những hàm số sau.
+
 
 ### インストール(install)
 プラグインをインストール時に実行される関数です。ここで行う主な処理として、
@@ -91,6 +96,11 @@ class PluginManager extends AbstractPluginManager
 - インストール時に1回だけ行いたい処理
 
 等を記述します。
+------
+Đây là hàm số chạy khi install plugin. Ở đây, mô tả xử lý chính chẳng hạn như 
+
+- Xử lý copy resource file sử dụng trong plugin như màn hình và CSS file.
+- Xử lý ta muốn tiến hành duy nhât 1 lần khi install.
 
 ### アンインストール(uninstall)
 プラグインをアンインストール時に実行される関数です。ここで行う主な処理として、
@@ -102,7 +112,14 @@ class PluginManager extends AbstractPluginManager
 `$this->migrationSchema($app, __DIR__.'/Resource/doctrine/migration', $config['code'], 0);`
 
 等を記述します。
+------
+Đây là hàm số chạy khi uninstall plugin. Ở đây, mô tả xử lý chính chẳng hạn như 
 
+- Xử lý muốn tiến hành khi uninstall.
+- Xóa block.
+- Xóa resource file sử dụng trong plugin như màn hình và CSS file.
+- Xử lý DB migration (xóa table dùng trong plugin).
+`$this->migrationSchema($app, __DIR__.'/Resource/doctrine/migration', $config['code'], 0);`
 
 ### 有効(enable)
 プラグインを有効時に実行される関数です。ここで行う主な処理として、
@@ -112,8 +129,12 @@ class PluginManager extends AbstractPluginManager
 - ブロックの追加
 
 等を記述します。
+-------
+Đây là hàm số chạy khi enable plugin. Ở đây, mô tả xử lý chính chẳng hạn như 
 
-
+- Xử lý DB migration
+`$this->migrationSchema($app, __DIR__.'/Resource/doctrine/migration', $config['code']);`
+- Thêm block
 
 ### 無効(disable)
 プラグインを無効時に実行される関数です。ここで行う主な処理として、
@@ -121,8 +142,10 @@ class PluginManager extends AbstractPluginManager
 - ブロックの無効化
 
 等を記述します。
-
-
+------
+Đây là hàm số chạy khi disable plugin. Ở đây, mô tả xử lý chính chẳng hạn như 
+ 
+- Vô hiệu hóa block
 
 ### 更新(update)
 プラグインを更新時に実行される関数です。ここで行う主な処理として、
@@ -137,6 +160,15 @@ class PluginManager extends AbstractPluginManager
 
 
 - 上記処理を考慮した例
+-----
+Đây là hàm số chạy khi update plugin. Ở đây, mô tả xử lý chính chẳng hạn như khi thêm chức năng
+
+- Xử lý DB migration 
+`$this->migrationSchema($app, __DIR__.'/Resource/doctrine/migration', $config['code']);`
+- Copy, xóa resource file 
+- Thêm block mới
+
+Nó hầu như giống với xử lý khi install.
 
 ```php
 <?php
