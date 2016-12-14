@@ -29,3 +29,30 @@ EC-CUBE3では標準機能では存在しない機能を拡張できるように
 __参考資料__
 
 - [プラグイン仕様書](http://downloads.ec-cube.net/src/manual/v3/plugin.pdf){:target="_blank"}
+
+
+-------------
+
+Plugin dùng để mở rộng các chức năng không tồn tại trong số các chức năng tiêu chuẩn của EC-CUBE 3.
+
+Những nội dung mọi người thường băn khoăn trước khi tạo Plugin là
+
+- Có thể làm được những gì bằng Plugin
+- Nên tạo plugin như thế nào?
+- Trong plugin còn có thể làm gì?
+
+
+Dựa trên những nội dung lần này, để có thể trờ thành index khi tạo plugin tôi tóm tắt những nội dung như dưới đây
+
+- Nên tạo plugin như thế nào?
+- Những cái plugin có thể làm và khó làm được
+- Có thể làm được gì bằng plugin?
+
+
+Nội dung ghi trong Practice này không hoàn toàn là cần thiết đối với plugin hiện tại
+
+Hãy tham khảo khi tạo Plugin mới 
+
+__Tài liệu tham khảo__
+
+- [プラグイン仕様書](http://downloads.ec-cube.net/src/manual/v3/plugin.pdf){:target="_blank"}
