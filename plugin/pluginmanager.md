@@ -9,6 +9,7 @@ title: プラグインマネージャー
 そのクラスは`PluginManager`であり、例えばプラグインをインストール時に行っておきたい処理は`PluginManager`に記述しておきます。
 
 Khi tiến hành Install, Uninstall, Enable, Disable, Update plugin có một class nhất định phải gọi.
+
 Class đó là `PluginManager`. Ví dụ như khi tiến hành xử lý của install plugin, phải ghi `PluginManager` vào.
 
 ```
@@ -96,7 +97,8 @@ Tôi sẽ tổng hợp từng xử lý được thực hiện bằng những hà
 - インストール時に1回だけ行いたい処理
 
 等を記述します。
-------
+
+ ↓
 Đây là hàm số chạy khi install plugin. Ở đây, mô tả xử lý chính chẳng hạn như 
 
 - Xử lý copy resource file sử dụng trong plugin như màn hình và CSS file.
@@ -112,7 +114,8 @@ Tôi sẽ tổng hợp từng xử lý được thực hiện bằng những hà
 `$this->migrationSchema($app, __DIR__.'/Resource/doctrine/migration', $config['code'], 0);`
 
 等を記述します。
-------
+
+ ↓
 Đây là hàm số chạy khi uninstall plugin. Ở đây, mô tả xử lý chính chẳng hạn như 
 
 - Xử lý muốn tiến hành khi uninstall.
@@ -129,7 +132,8 @@ Tôi sẽ tổng hợp từng xử lý được thực hiện bằng những hà
 - ブロックの追加
 
 等を記述します。
--------
+
+ ↓
 Đây là hàm số chạy khi enable plugin. Ở đây, mô tả xử lý chính chẳng hạn như 
 
 - Xử lý DB migration
@@ -142,7 +146,8 @@ Tôi sẽ tổng hợp từng xử lý được thực hiện bằng những hà
 - ブロックの無効化
 
 等を記述します。
-------
+
+ ↓
 Đây là hàm số chạy khi disable plugin. Ở đây, mô tả xử lý chính chẳng hạn như 
  
 - Vô hiệu hóa block
@@ -160,7 +165,8 @@ Tôi sẽ tổng hợp từng xử lý được thực hiện bằng những hà
 
 
 - 上記処理を考慮した例
------
+
+ ↓
 Đây là hàm số chạy khi update plugin. Ở đây, mô tả xử lý chính chẳng hạn như khi thêm chức năng
 
 - Xử lý DB migration 
@@ -169,6 +175,8 @@ Tôi sẽ tổng hợp từng xử lý được thực hiện bằng những hà
 - Thêm block mới
 
 Nó hầu như giống với xử lý khi install.
+
+- Ví dụ dùng những xứ lý trên
 
 ```php
 <?php
