@@ -7,8 +7,9 @@ title: リソースファイル、ブロック
 
 プラグインで画像ファイルやCSSファイルなどのリソースファイルを利用する場合、EC-CUBE本体の公開ディレクトリへリソースファイルをコピーする必要があります。
 
+Trường hợp sử dụng resource file trong plugin như file screen hay file CSS, cần phải copy resource file đến public directory của Hontai EC-CUBE
 
-### リソースファイルの配置場所
+### リソースファイルの配置場所 (Vị trí đặt resource file)
 
 ```
 [プラグインコード]
@@ -26,12 +27,17 @@ title: リソースファイル、ブロック
 
 `assets`ディレクトリ配下のものを本体側の公開ディレクトリへコピーします。
 
+Copy cái trong directory `assets` đến public directory của Hontai 
 
-### 本体側へのコピー
+### 本体側へのコピー (Copy đến phía Hontai)
 
 本体側へコピーする方法はいくつかありますが、[プラグインマネージャー](pluginmanager)内で行うのが一番簡単です。
 
+Có nhiều cách để copy đến Hontai nhưng đơn giản nhất là tiến hành trong [プラグインマネージャー](pluginmanager)
+
 コピー先のディレクトリですが、
+
+Directory của nơi copy
 
 ```
 ECCUBEROOT
@@ -69,11 +75,15 @@ ECCUBEROOT
 
 `html`ディレクトリ直下の`plugin`ディレクトリ内にプラグインコードでディレクトリを作成して配置します。ディレクトリを作成する場合、全て小文字でプラグインコードを作成した方が大文字を区別しなくて済むのでオススメです。
 
+Trong directory `plugin` ngay dưới directory `html`, tạo directory bằng plugin code rồi đặt vào. Trường hợp tạo directory, tôi khuyên nên viết plugin code tất cả bằng chữ nhỏ để không cần phân biệt với chữ lớn nữa.
 
-### ブロックの場合
+
+### ブロックの場合 (Trường hợp của Block)
 
 リソースファイルではないのですが、プラグインでブロックを追加したい時があります。その場合、リソースファイルと同様に本体側へコピーする必要があります。
 こちらも同様にプラグインマネージャー内でコピーを行う方法が簡単です。
+
+Không phải resource file nhưng trong plugin cũng có lúc muốn thêm block vào bằng plugin. Khi đó, cũng cần phải copy đến Hontai giống như resource file. Tương tư, cách tiến hành trong Plugin managemer cũng đơn giản nhất.
 
 ```
 ECCUBEROOT
@@ -107,6 +117,8 @@ $file->copy('コピー元ファイル', $app['config']['block_realdir'] . '/' . 
 
 
 また、ブロック追加時は`dtb_block`テーブルへ追加する必要があります。
+
+
 
 ```php
 $DeviceType = $app['eccube.repository.master.device_type']->find(DeviceType::DEVICE_TYPE_PC);
