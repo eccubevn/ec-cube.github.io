@@ -109,7 +109,7 @@ ECCUBEROOT
 
 - ブロックファイルのコピー例
 
-- Ví dụ của Copy block file
+Ví dụ của Copy block file
 
 ```
 $file = new Filesystem();
