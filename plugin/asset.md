@@ -109,6 +109,8 @@ ECCUBEROOT
 
 - ブロックファイルのコピー例
 
+- Ví dụ của Copy block file
+
 ```
 $file = new Filesystem();
 // ブロックファイルをコピー
@@ -118,6 +120,7 @@ $file->copy('コピー元ファイル', $app['config']['block_realdir'] . '/' . 
 
 また、ブロック追加時は`dtb_block`テーブルへ追加する必要があります。
 
+Ngoài ra, khi thêm block thì phải thêm vào table `dtb_block`
 
 
 ```php
@@ -136,8 +139,11 @@ $em->flush($Block);
 
 ※本体側でトランザクション制御をしれくれるため、ロールバック処理などは必要ありません。
 
+Vì ở Hontai có Transaction restraint nên không cần xử lý rollback
 
-### リソースファイルの削除
+
+### リソースファイルの削除 (Xóa resource file)
 
 プラグインを削除する場合、リソースファイルを削除するのを忘れないでください。
 
+Trường hợp xóa Plugin, đừng quên xóa resource file.
