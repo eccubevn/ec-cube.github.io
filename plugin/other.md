@@ -16,5 +16,5 @@ title: プラグインで推奨していないこと
 Trong Plugin, cơ bản có thể làm gì cũng được nhưng có một số thứ chúng tôi khuyên không nên làm gì vì sẽ ảnh hưởng đến Hontai.
 
 - Việc thêm column vào table có sẵn
-- Đối ứng khi thêm column
-- Kế thừa class có sẵn và overwrite hàm số
+- Đối ứng khi đã thêm column
+- Kế thừa class có sẵn và override hàm số
